@@ -24,15 +24,6 @@
                             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
-                    @if (request()->route()->status == App\Models\Post::STATUS_NOT_APPROVED)
-                        <form action="{{ route('admin.blog.approved.all')}}" method="POST" class="form-approved-all">
-                            @csrf
-                            @method("PUT")
-                            <button class="btn btn-primary btn-approved-all">
-                                {{ __('admin.btn_approved_all') }}
-                            </button>
-                        </form>
-                    @endif
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>

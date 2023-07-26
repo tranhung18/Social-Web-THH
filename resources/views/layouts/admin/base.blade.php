@@ -86,6 +86,14 @@
                   </ul>
                 </li>
                 <li class="nav-item">
+                  <a href="{{ route('admin.categories.index') }}" 
+                    class="nav-link @if (Route::is('admin.categories.index')) active @endif" 
+                  >
+                    <i class="fa-solid fa-list"></i>
+                    <p>{{ __('admin.navbar_category') }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <form method="POST" action="{{ route('logout') }}" class="nav-link">
                     @csrf
                     <button>

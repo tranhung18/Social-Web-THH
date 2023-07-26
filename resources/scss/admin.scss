@@ -20,13 +20,15 @@
                                 outline: none;
                                 border: none;
                                 background: none;
+                                padding: 0;
+
+                                i {
+                                    margin-right: 10px;
+                                }
+                                
                                 i, p {
                                     color: #c2c7d0;
                                 }
-
-                                // i {
-                                //     color: white;
-                                // }
                             }
                         }
                         a {

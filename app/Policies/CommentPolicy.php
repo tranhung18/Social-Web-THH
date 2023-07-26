@@ -7,7 +7,6 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
 
 class CommentPolicy
 {
@@ -23,7 +22,7 @@ class CommentPolicy
 
     public function create(User $user): bool
     {
-        return Auth::check() && $user->role === User::ROLE_USER && $user->status === User::STATUS_ACTIVE;
+        return Auth::check() && $user->status === User::STATUS_ACTIVE;
     }
 
     public function update(User $user, Comment $comment): bool

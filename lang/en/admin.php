@@ -4,6 +4,7 @@
         'navbar_user' => 'Users',
         'navbar_blog' => 'Blogs',
         'navbar_all_blog' => 'All Blog',
+        'navbar_category' => 'Categories',
         'navbar_logout' => 'Log out',
         'navbar_blogs_not_approved' => 'Blogs not Approved',
 
@@ -14,6 +15,7 @@
         'title_page_dashboard' => 'Dashboard',
         'title_page_user' => 'Users Management',
         'title_page_blog' => 'Blogs Management',
+        'title_page_category' => 'Category Management',
         'title_all_blog' => 'All Blog',
         'title_blog_not_approved' => 'Blogs not Approved',
         'title_box_approved' => 'Approved',

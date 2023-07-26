@@ -21,6 +21,6 @@ class LikePolicy
 
     public function create(User $user): bool
     {
-        return Auth::check() && $user->role === User::ROLE_USER;
+        return Auth::check() && $user->status === User::STATUS_ACTIVE;
     }
 }

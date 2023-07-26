@@ -49,16 +49,6 @@ class PostController extends Controller
         return redirect()->back()->with('error', __('admin.msg_approved_blog_fail'));
     }
 
-    public function approvedAllBlog()
-    {
-        $this->authorize('isAdmin', User::class);
-        if ($this->postServiceAdmin->approvedAllBlog()) {
-            return redirect()->back()->with('success', __('admin.msg_approved_blogs_success'));
-        }
-
-        return redirect()->back()->with('error', __('admin.msg_approved_blogs_fail'));
-    }
-
     public function deleteBlog(Post $blog)
     {
         $this->authorize('delete', $blog);

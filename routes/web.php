@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\CommentController;
@@ -65,12 +66,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'],function () {
     Route::group(['as' => 'blog.', 'prefix' => 'blogs'],function () {
         Route::get('/{status}', [PostControllerAdmin::class, 'viewBlog'])->name('index');
         Route::put('{blog}/update', [PostControllerAdmin::class, 'approvedBlog'])->name('update.status');
-        Route::put('/approvedAll', [PostControllerAdmin::class, 'approvedAllBlog'])->name('approved.all');
         Route::delete('{blog}/delete', [PostControllerAdmin::class, 'deleteBlog'])->name('delete');
     });
     Route::group(['as' => 'user.', 'prefix' => 'users'],function () {
         Route::get('/', [UserControllerAdmin::class, 'viewUser'])->name('index');
         Route::get('{user}/profile', [UserControllerAdmin::class, 'viewProfileUser'])->name('profile');
         Route::delete('{user}/delete', [UserControllerAdmin::class, 'deleteUser'])->name('delete');
+    });
+
+    Route::group(['as' => 'categories.', 'prefix' => 'categories'],function () {
+        Route::get('/', [CategoryController::class, 'view'])->name('index');
     });
 });

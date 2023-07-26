@@ -24,9 +24,4 @@ class UserPolicy
     {
         return $user->role === User::ROLE_ADMIN;
     }
-
-    public function deleteUser(User $user)
-    {
-        return $user->role === User::ROLE_ADMIN;
-    }
 }

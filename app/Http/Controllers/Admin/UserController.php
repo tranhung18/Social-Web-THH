@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function deleteUser(User $user)
     {
-        $this->authorize('deleteUser', User::class);
+        $this->authorize('isAdmin', User::class);
 
         if ($this->userService->delete($user)) {
             return redirect()->route('admin.user.index')->with('success', __('admin.msg_delete_user_success'));

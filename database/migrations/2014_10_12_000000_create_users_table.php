@@ -14,9 +14,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_name');
-            $table->string('avatar');
-            $table->tinyInteger('status');
-            $table->tinyInteger('role');
+            $table->string('avatar')->nullable();
+            $table->tinyInteger('status')->default('0');
+            $table->tinyInteger('role')->default('2');
+            $table->string('token_verify_email');
             $table->rememberToken();
             $table->timestamps();
         });

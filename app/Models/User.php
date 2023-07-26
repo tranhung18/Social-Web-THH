@@ -26,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     const LIMIT_USER_PAGE = 6;
 
-    const FILENAME_AVATAR_DEFAULT = 'images/Group 154.png';
+    const FILENAME_AVATAR_DEFAULT = 'images/avatar-default.png';
 
     /**
      * The attributes that are mass assignable.

@@ -57,17 +57,4 @@ class PostService
             return false;
         }
     }
-
-    public function approvedAllBlog(): bool
-    {
-        try {
-            Post::notApproved()->update([
-                'status' => Post::STATUS_APPROVED
-            ]);
-
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
-    }
 }
