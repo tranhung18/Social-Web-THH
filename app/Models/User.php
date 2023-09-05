@@ -24,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     const ROLE_USER = 2;
 
-    const LIMIT_USER_PAGE = 6;
+    const LIMIT_USER_PAGE = 3;
 
     const FILENAME_AVATAR_DEFAULT = 'images/avatar-default.png';
 

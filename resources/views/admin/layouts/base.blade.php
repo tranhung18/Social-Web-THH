@@ -47,43 +47,13 @@
                     <p>{{ __('admin.navbar_user') }}</p>
                   </a>
                 </li>
-                <li class="nav-item 
-                  @if (Route::is('admin.blog.index') || Route::is('admin.blog.not.approved')) 
-                    menu-is-opening menu-open
-                  @endif
-                 ">
+                <li class="nav-item">
                   <a href="{{ route('admin.blog.index', ['status' =>  App\Models\Post::STATUS_ALL_BLOG]) }}" 
                     class="nav-link @if (Route::is('admin.blog.index')) active @endif" 
                   >
                     <i class="fa-solid fa-blog"></i>
                     <p>{{ __('admin.navbar_blog') }}</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{ route('admin.blog.index', ['status' =>  App\Models\Post::STATUS_ALL_BLOG]) }}"
-                        @if (request()->route()->status == App\Models\Post::STATUS_ALL_BLOG)
-                          class ="nav-link active"
-                        @else
-                          class="nav-link"
-                        @endif
-                      >
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.navbar_all_blog') }}</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{ route('admin.blog.index', ['status' =>  App\Models\Post::STATUS_NOT_APPROVED]) }}"
-                        @if (request()->route()->status == App\Models\Post::STATUS_NOT_APPROVED)
-                          class ="nav-link active"
-                        @else
-                          class="nav-link"
-                        @endif
-                      >
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>{{ __('admin.navbar_blogs_not_approved') }}</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.categories.index') }}" 

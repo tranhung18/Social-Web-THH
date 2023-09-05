@@ -1,11 +1,11 @@
-@extends('layouts.admin.base')
+@extends('admin.layouts.base')
 
 @section('title_page')
   <h1>{{ __('admin.title_page_blog') }}</h1>
 @endsection
 
 @section('content')
-    <section class="content layout-blogs">
+    <section class="content layout-template layout-blogs">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
@@ -16,6 +16,7 @@
                     @endif
                 </h3>
                 <div class="card-tools">
+                    <a href="{{ route('blog.create') }}" class="btn btn-primary">New Blogs</a>
                     <form action="{{ route('admin.blog.index', ['status' => request()->route()->status]) }}" method="GET" class='form-search'>
                         <input type="text" name='data' placeholder="{{ __('admin.placeholder_input_search') }}"
                             @if (request()->data) value="{{ request()->data}}" @endif

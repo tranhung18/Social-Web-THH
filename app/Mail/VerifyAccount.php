@@ -39,7 +39,7 @@ class VerifyAccount extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'auth.text_verify_account',
+            view: 'auth.mail_verify_account',
         );
     }
 

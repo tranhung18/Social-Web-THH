@@ -22,8 +22,12 @@ class PostController extends Controller
 
     protected LikeService $likeService;
 
-    public function __construct(PostService $postService, CategoryService $categoryService, CommentService $commentService, LikeService $likeService)
-    {
+    public function __construct(
+        PostService $postService,
+        CategoryService $categoryService,
+        CommentService $commentService,
+        LikeService $likeService
+    ) {
         $this->postService = $postService;
         $this->categoryService = $categoryService;
         $this->commentService = $commentService;

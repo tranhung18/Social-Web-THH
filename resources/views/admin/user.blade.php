@@ -1,112 +1,80 @@
-@extends('layouts.admin.base')
+@extends('admin.layouts.base')
 
 @section('title_page')
   <h1>{{ __('admin.title_page_user') }}</h1>
 @endsection
 
 @section('content')
-  <section class="content layout-users">
-    <div class="card card-solid">
-      <div class="card-body pb-0">
-        <div class="row">
-          @foreach ($users as $user)
-            <div class="item-user col-12 col-sm-12 col-md-6 col-lg-4  d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  {{ __('admin.title_item_user') }}
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row box-info-user">
-                    <div class="col-3 text-center avatar-user">
-                      <img src="{{ Storage::url($user->avatar) }}" alt="user-avatar" class="img-circle img-fluid">
-                    </div>
-                    <div class="col-9 info">
-                      <h2 class="lead user-name"><b>{{ $user->user_name }}</b></h2>
-                      <div class="item-info">
-                        <i class="fa-solid fa-envelope"></i>
-                        <p>{{ $user->email }}</p>
-                      </div>
-                      <div class="item-info">
-                        <i class="fa-solid fa-calendar-plus"></i>
-                        <p>{{ $user->created_at }}</p>
-                      </div>
-                      <div class="item-info status-user">
-                        @if ($user->status === App\Models\User::STATUS_ACTIVE)
-                          <i class="fa-solid fa-user-check"></i>{{ __('admin.text_user_active')}}
-                        @else 
-                          <i class="fa-solid fa-user-xmark"></i>{{ __('admin.text_user_inactive')}}
-                        @endif
-                      </div>
-                      <div class="item-info">
-                        <i class="fa-solid fa-blog"></i>
-                        <p>{{ $user->blogs()->count() }} Blog</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <form action="{{ route('admin.user.delete', ['user' => $user]) }}" method="POST" class="card-footer-option text-right">
-                    @csrf
-                    @method("DELETE")
-                    <a class="btn btn-primary btn-sm" href="{{ route('admin.user.profile', ['user' => $user]) }}">
-                      <i class="fa-solid fa-eye"></i>
-                    </a>
-                    <a class="btn btn-info btn-sm" href="{{ route('admin.user.profile', ['user' => $user]) }}">
-                      <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                    <button class="btn btn-danger btn-sm">
-                      <i class="fa-solid fa-trash-can"></i>
+  <section class="content layout-template layout-users">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                {{ __('admin.title_item_user')}} 
+                ({{ $dataTotal['totalUser'] }})
+            </h3>
+            <div class="card-tools">
+                <form action="#" method="GET" class='form-search'>
+                    <input type="text" name='data' placeholder="{{ __('admin.placeholder_input_search') }}"
+                        @if (request()->data) value="{{ request()->data}}" @endif
+                    >
+                    <button>
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </button>
-                  </form>
-                </div>
-              </div>
+                </form>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-          @endforeach
         </div>
-      </div>
+        <div class="card-body p-0" style="overflow-x:auto;">
+            <table border='1px' class="table table-categories table-striped projects">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Avatar</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Role</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $user->id }}</td>
+                            <td class="avatar-user">
+                              <img src="{{ Storage::url($user->avatar) }}" alt="user-avatar" class="img-circle img-fluid">
+                            </td>
+                            <td>{{ $user->user_name }}</td>
+                            <td>{{ $user->status }}</td>
+                            <td>{{ $user->role }}</td>
+                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $user->updated_at }}</td>
+                            <td class="options-user-item">
+                                <form action="#" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <a target="_blank" class="btn btn-primary btn-sm" href="{{ route('admin.user.profile', ['user' => $user]) }}">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-    <ul class="paginate">
-      <ul class="paginate">
-        @if ($users->lastPage() > 1)
-            <li class="arrow-paginate">
-                <a href="{{ $users->previousPageUrl() }}" rel="prev">
-                    <i class="fa-solid fa-angle-left"></i>
-                </a>
-            </li>
-            <li class="{{ ($users->currentPage() == 1) ? ' paginate-active' : '' }}">
-                <a href="{{ $users->url($users->onFirstPage()) }}">1</a>
-            </li>
-            <?php
-                $start = $users->currentPage() - 2;
-                $end = $users->currentPage() + 2;
-                if ($start < 1) {
-                    $start = 1;
-                    $end += 1;
-                } 
-                if ($end >= $users->lastPage()) {
-                    $end = $users->lastPage();
-                }
-            ?>
-            @if ($users->currentPage() > 3)
-                <li><span>...</span></li>
-            @endif
-            @for ($i = $start + 1; $i < $end; $i++)
-                    <li class="{{ ($users->currentPage() == $i) ? ' paginate-active' : '' }}">
-                        <a href="{{ $users->url($i) }}">{{$i}}</a>
-                    </li>
-            @endfor
-            @if ($users->currentPage()+2 < $users->lastPage())
-                <li><span>...</span></li>
-            @endif
-            <li class="{{ ($users->currentPage() == $users->lastPage()) ? ' paginate-active' : '' }}">
-                <a href="{{ $users->url($users->lastPage()) }}">{{ $users->lastPage() }}</a>
-            </li>
-            <li class="arrow-paginate">
-                <a href="{{ $users->nextPageUrl() }}" rel="next">
-                    <i class="fa-solid fa-angle-right"></i>
-                </a>
-            </li>
-        @endif
-    </ul>
-  </section>
+</section>
 @endsection
