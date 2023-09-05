@@ -1,4 +1,4 @@
-@extends('layouts.admin.base')
+@extends('admin.layouts.base')
 
 @section('title_page')
   <h1>{{ __('admin.title_page_blog') }}</h1>

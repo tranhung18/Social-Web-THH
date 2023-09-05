@@ -8,18 +8,3 @@
     font-family: "SVN-Gilroy-Bold";
     src: url("../fonts/SVN-Gilroy\ Bold.otf");
 }
-@mixin fontNotoBold {
-    font-family: "Noto Sans JP";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 22px;
-    color: $text-color-black;
-}
-@mixin fontNotoRegular {
-    font-family: 'Noto Sans JP';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 22px;
-}

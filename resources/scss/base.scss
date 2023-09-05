@@ -1,116 +1,20 @@
 $color-primary: #C40000;
-$color-border-primary: #007BFF;
+$color-blue-main: #007BFF;
 $color-btn: #770303;
-$text-color-black: #212121;
-$text-color-link: #007BFF;
-$text-color-grey: #AFAFAF;
-$text-color-blog: #211E3B;
-$text-input-file: #87B6E7;
 $color-error: #DC3545;
 $color-cancel: #B0B0B0;
 $color-success: #18B727;
-$border-input: #DEDEDE;
-$border-btn: #E4E4E4;
+$text-color-black: #212121;
+$text-color-link: #007BFF;
+$text-color-gray: #AFAFAF;
+$text-color-blog: #211E3B;
+$text-upload-file: #87B6E7;
+$border-color-gray-v1: #DEDEDE;
+$border-color-gray-v2: #E4E4E4;
 $border-color-default: #CCCCCC;
-$background-btn-primary: #007BFF;
-$background-create: #D9D9D9;
-$background-btn-not: #ABB1AB;
+$bg-gray-v1: #D9D9D9;
+$bg-gray-v2: #ABB1AB;
 
-@import "./fonts.scss";
-
-@mixin fontInfoImg {
-    font-family: "SVN-Gilroy";
-    height: 31px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 30px;
-}
-@mixin centerVertical {
-    display: flex;
-    align-items: center;
-}
-@mixin centerHorizontal {
-    display: flex;
-    justify-content: center;
-}
-@mixin centerAll {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-@mixin hover {
-    color: $color-primary;
-    cursor: pointer;
-}
-@mixin btnPrimary {
-    background-color: $background-btn-primary;
-    color: white;
-    border-radius: 4px;
-    border: 1px solid #007BFF;
-}
-@mixin inputText {
-    background: #FFFFFF;
-    border: 1px solid $border-input;
-    border-radius: 4px;
-}
-@mixin btnFile {
-    padding: 8px 12px 10px 15px;
-    @include fontNotoBold;
-    color: $text-input-file;
-    border: 1px solid $color-border-primary;
-    cursor: pointer;
-}
-@mixin paginate {
-    position: relative;
-    @include centerAll;
-    li {
-        @include centerAll;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-        a {
-            height: 28px;
-            font-family: "SVN-Gilroy-Bold";
-            font-style: normal;
-            font-size: 20px;
-            line-height: 28px;
-            color: #211E3B;
-        }
-    }
-    li:hover, .paginate-active {
-        border-radius: 50%;
-        background-color: #FFE4E4;
-        a {
-            color: $color-primary;
-        }
-    }
-    .arrow-paginate {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        a {
-            color: white;
-        }
-    }
-    .arrow-paginate:hover {
-        opacity: 0.8;
-        a {
-            color: white;
-        }
-    }
-    li:first-child {
-        background-color: $color-primary;
-    }
-    li:last-child {
-        background: #E5E5E5;
-    }
-    li + li {
-        margin-left: 10px;
-    }
-}
-::-webkit-input-placeholder {
-    color: $text-color-grey;
-}
 body {
     position: relative;
     box-sizing: border-box;
@@ -130,191 +34,15 @@ body {
         margin-bottom: 5px;
     }
 }
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    .container-header {
-        width: 100%;
-        margin: 0 !important;
-        position: absolute;
-        top: 0;
-        background-color: rgba(255, 255, 255, 0.65);
-        padding: 30px 0 31px;
-        box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.25);
-        transition: all .8s linear;
-        .header-mobile {
-            display: none;
-        }
-        .header-desktop {
-            @include centerVertical;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 0 102px;
-            .header-left {
-                @include centerVertical;
-                .logo-header {
-                    margin-right: 33px;
-                    cursor: pointer;
-                }
-                .search-header {
-                    position: relative;
-                    width: 374px; 
-                    @include centerVertical;
-                    input {
-                        width: 100%;
-                        padding: 13px 13px 13px 20px;
-                        border: 1px solid #D4D4D4;
-                        border-radius: 5px;
-                    }
-                    button {
-                        background: none;
-                        border: none;
-                        position: absolute;
 
-                        right: 0;
-                        margin : 13px ;
-                        i {
-                            color: #A7A7A7;
-                            width: 19px;
-                            height: 19px;
-                        }
-                    }
-                    button:hover {
-                        @include hover;
-                    }
-                }
-            }
-            .header-right {
-                @include centerVertical;
-                justify-content: flex-end;
-                .header-tag {
-                    @include centerVertical;
-                    justify-content: flex-end;
-                    margin-right: 106px;
-                    a:first-child {
-                        margin-right:  27px;
-                    }
-                    a.active {
-                        padding: 2px 11px 2px 11px;
-                        height: 31px;
-                        font-size: 15px;
-                        font-weight: 500;
-                        border: 0;
-                        border-radius:3px;
-                        outline: none;
-                        background-color: $color-btn;
-                        color: white;
-                    }
-                    a {
-                        height: 24px;
-                        @include fontNotoBold;
-                        font-weight: 700;
-                    }
-                    a.active:hover {
-                        color: white;
-                    }
-                    a:hover {
-                        @include hover;
-                    }
-                }
-                .header-account {
-                    position: relative;
-                    @include centerVertical;
-                    a {
-                        @include fontNotoBold;
-                    }
-                    a:hover {
-                        @include hover;
-                    }
-                    a + a {
-                        margin-left: 32px;
-                    }
-                    .avatar {
-                        margin-left: 17px;
-                        img {
-                            width: 27px;
-                            height: 27px;
-                            border-radius: 50%;
-                        }
-                        form {
-                            margin-bottom: 0;
-                            ul {
-                                min-width: 150px;
-                                position: absolute;
-                                top: 100%;
-                                right: 0;
-                                z-index: 3;
-                                margin-top: 12px;
-                                background-color: white;
-                                border-radius: 5px;
-                                overflow: hidden;
-                                display: none;
-                                li {
-                                    width: 100%;
-                                    text-align: center;
-                                    margin: 5px 0;
-                                    padding: 0 10px;
-                                    a, button{
-                                        @include fontNotoBold;
-                                    }
-                                    button {
-                                        background: none;
-                                        border: none;
-                                    }
-                                }
-                                li:hover {
-                                    a, button {
-                                        @include hover;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .connect-menu {
-                        border: 15px solid;
-                        border-color: transparent transparent white transparent;
-                        position: absolute;
-                        top: 50%;
-                        right: 0;
-                        display: none;
-                    }
-                    .avatar:hover ul {
-                        @include centerAll;
-                        flex-direction: column;
-                    }
-                    .avatar:hover .connect-menu {
-                        display: block;
-                    }
-                }
-                
-            }
-        }
-    }
-    .header-scrolled {
-        top: -122px;
-    }
+::-webkit-input-placeholder {
+    color: $text-color-gray;
 }
-.menu-mobile, .search-mobile {
+
+.hidden {
     display: none;
-    width: 0%;
-    z-index: 2;
 }
-footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: #000000;
-    p {
-        @include fontNotoRegular;
-        color: white;
-        height: 20px;
-        text-align: center;
-        margin: 37px auto 37px;
-    }
-}
+
 .box-delete {
     overflow: hidden;
     position: fixed;
@@ -335,7 +63,7 @@ footer {
             justify-content: space-between;
             border-bottom: 1px solid $border-color-default;
             p {
-                @include fontNotoBold;
+                @include fontNoto(700);
                 font-size: 20px;
                 padding: 16px 0 16px 28px;
             }
@@ -350,7 +78,7 @@ footer {
             height: 118px;
             @include centerAll;
             p {
-                @include fontNotoRegular;
+                @include fontNoto;
             }
         }
         .form-request {
@@ -358,7 +86,7 @@ footer {
             border-top: 1px solid $border-color-default;
             @include centerVertical;
             justify-content: space-between;
-            .btn {
+            div, .btn {
                 color: #FFF;
                 font-size: 20px;
                 font-family: "Noto Sans JP";
@@ -379,6 +107,31 @@ footer {
         }
     }
 }
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 1rem 0;
+    list-style-type: none;
+    li {
+        margin: 0 0.25rem;
+    }
+    button {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+        border: none;
+        border-radius: 100%;
+        background-color: #d9d9d9;
+        text-indent: -9999px;
+    }
+    li.slick-active button {
+        background-color: #801616;
+    }
+}
+
 .notification {
     position: fixed;
     z-index: 3;
@@ -393,7 +146,7 @@ footer {
         box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.25);
         @include centerVertical;
         strong {
-            @include fontNotoBold;
+            @include fontNoto(700);
             font-size: 18px;
         }
     }

@@ -39,7 +39,7 @@ class ForgotPassword extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'auth.text_forgot_password',
+            view: 'auth.mail_forgot_password',
         );
     }
 

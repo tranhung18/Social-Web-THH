@@ -1,3 +1,4 @@
+@import "./mixin.scss";
 @import "./base.scss";
 
 .wrapper {
@@ -52,7 +53,7 @@
         }
     }
 }
-.layout-blogs {
+.layout-blogs, .layout-categories {
     position: relative;
     .card {
         .card-header {
@@ -219,6 +220,24 @@
         @include paginate;
     }
 }
+
+.layout-categories {
+    .card {
+        .card-header {
+            .card-tools {
+                button:first-child {
+                    margin-right: 20px;
+                }
+            }
+        }
+        .card-body {
+            table {
+                text-align: center;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 768px){
     .layout-blogs {
         .card {
