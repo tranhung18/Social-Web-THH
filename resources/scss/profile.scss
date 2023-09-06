@@ -28,7 +28,7 @@
             padding: 8px 20px;
             border-radius: 4px;
             border: 1px solid #e1e1e1;
-            background-color: $background-btn-primary;
+            background-color: $color-blue-main;
             color: white;
         }
         .info-user {
@@ -93,11 +93,11 @@
                     width: 100%;
                     margin: 10px auto 20px;
                     text-align: center;
-                    @include fontNotoBold;
+                    @include fontNoto(700);
                     font-size: 20px;
                 }
                 p {
-                    @include fontNotoRegular;
+                    @include fontNoto;
                     color: $text-color-blog;
                     line-height: 28px;
                 }
@@ -112,7 +112,7 @@
                     color: blue;
                     background: none;
                     padding: 20px 25px;
-                    border: 1px solid $color-border-primary;
+                    border: 1px solid $color-blue-main;
                     border-radius: 50%;
                     overflow: hidden;
                     @include centerAll;
@@ -120,7 +120,7 @@
                 }
                 p {
                     margin-top: 10px;
-                    @include fontNotoRegular;
+                    @include fontNoto;
                     font-size: 20px;
                     line-height: 30px;
                 }

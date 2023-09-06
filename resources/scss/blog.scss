@@ -1,0 +1,444 @@
+.layout-create, .layout-update {
+    margin: 156px 106px 40px 100px;
+    .dashboard {
+        height: 23px;
+        @include centerVertical;
+        a, p {
+            line-height: 23px;
+            color: $text-color-gray;
+            font-size: 16px;
+        }   
+        p:last-child {
+            @include fontNoto(700);
+        }
+        i {
+            color: $text-color-gray;
+            font-size: 12px;
+            margin: 3px 5px 0;            
+        }
+        a:hover {
+            color: $color-primary;
+            font-weight: bold;
+        }
+    }
+    form {
+        width: 100%;
+        margin-top: 34px;
+        padding: 31px 32px 52px 30px;
+        background-color: $bg-gray-v1;
+        h3 {
+            margin-bottom: 16px;
+            @include fontNoto(700);
+            line-height: 29px;
+            font-size: 20px;
+        }
+        .form-item {
+            display: flex;
+            flex-direction: column;
+            label {
+                margin-bottom: 10px;
+                @include fontNoto;
+                span {
+                    color: red;
+                }
+            }
+            .item-input {
+                height: 40px;
+                @include inputText;
+            }
+            select {
+                width: 334px;
+                padding: 1px 174px 0 14px;
+                color: $text-color-gray;
+            }
+            .title {
+                margin-bottom: 20px;
+                padding: 0 0 1px 19px;
+            }
+            .btn-primary {
+                width: 133px;
+                margin: 10px 0;
+                padding: 8px 12px 10px 15px;
+                @include fontNoto(700);
+                color: $text-upload-file;
+                border:1px solid $color-blue-main;
+                cursor: pointer;
+            }
+            textarea {
+                min-height: 460px;
+                @include fontNoto;
+                line-height: 39px;
+                padding: 1px 0 0 19px;
+            }
+        }
+        .item-title {
+            margin-top: 34px;       
+        }
+        .img-preview {
+            width: 270px;
+            height: 170px;
+            overflow: hidden;
+            margin-bottom: 27px;
+            display: none;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        button {
+            @include fontNoto(700);
+            color: $text-upload-file;
+            background-color: white;
+            margin: 20px auto 0;
+            padding: 8px 30px;
+            border:1px solid $color-blue-main;
+            border-radius: 5px;
+        }
+    }
+}
+
+.layout-update {
+    form {
+        .img-preview {
+            display: block;
+        }
+    }
+}
+
+.layout-detail {
+    margin: 156px 110px 60px 100px;
+    .layout-detail-item {
+        .title {
+            text-align: center;
+            @include fontNoto(700);
+            color: #212121;
+            font-size: 24px;
+        }
+        .line-title {
+            width: 63px;
+            height: 3px;
+            margin: 18px auto 30px;
+            background-color: #747474;
+        }
+    }
+    .info-blog {
+        .dashboard {
+            height: 23px;
+            @include centerVertical;
+            a,
+            p {
+                line-height: 23px;
+                color: $text-color-gray;
+                font-size: 16px;
+            }
+            p:last-child {
+                @include fontNoto(700);
+            }
+            i {
+                color: $text-color-gray;
+                font-size: 12px;
+                margin: 3px 5px 0;
+            }
+            a:hover {
+                color: $color-primary;
+                font-weight: bold;
+            }
+        }
+        .detail-blog {
+            h3 {
+                color: #000;
+                @include fontNoto(700);
+                font-size: 18px;
+                margin-top: 40px;
+            }
+            .header-blog {
+                margin-top: 40px;
+                height: 40px;
+                position: relative;
+                @include centerVertical;
+                justify-content: space-between;
+                .auth {
+                    @include centerVertical;
+                    img {
+                        width: 36px;
+                        height: 36px;
+                        margin-right: 8px;
+                        border-radius: 50%;
+                    }
+                    .info {
+                        display: flex;
+                        flex-direction: column;
+                        p {
+                            color: #000;
+                            font-size: 12px;
+                            font-family: "Noto Sans JP";
+                            font-weight: 500;
+                        }
+                        p:last-child {
+                            color: #a7a7a7;
+                            font-size: 11px;
+                        }
+                    }
+                }
+                .control {
+                    @include centerVertical;
+                    justify-content: space-between;
+                    .item-status {
+                        height: 30px;
+                        padding: 3px 8px;
+                        font-size: 15px;
+                        font-family: "Noto Sans JP";
+                        font-weight: 400;
+                        line-height: 23px;
+                        color: #fff;
+                        border: none;
+                        border-radius: 3px;
+                    }
+                    .approved {
+                        background-color: $color-success;
+                    }
+                    .update-blog {
+                        background-color: orange;
+                        margin-left: 18px;
+                    }
+                    .not-approved {
+                        background-color: $bg-gray-v2;
+                    }
+                    .delete-blog {
+                        margin-left: 18px;
+                        background-color: $color-error;
+                    }
+                }
+            }
+            .img-blog {
+                margin-top: 40px;
+                width: 100%;
+                max-height: 900px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .content {
+                margin-top: 20px;
+                p {
+                    color: #747474;
+                    font-size: 14px;
+                    font-family: "Noto Sans JP";
+                }
+            }
+            .info-interactive {
+                margin-top: 15px;
+                @include centerVertical;
+                justify-content: flex-start;
+                .interactive-item {
+                    @include centerVertical;
+                    .total-comment,
+                    .total-like {
+                        font-size: 23px;
+                        line-height: 23px;
+                        margin-left: 5px;
+                    }
+                    i {
+                        color: red;
+                        font-size: 25px;
+                        height: 100%;
+                    }
+                    .fa-comment {
+                        color: blue;
+                    }
+                    i:hover {
+                        transform: scale(1.1);
+                    }
+                }
+                .like {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    .related {
+        margin-top: 55px;
+        .list-blog-related {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            .item-blog {
+                width: 300px;
+                margin-right: 36px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                background: #fff;
+                overflow: hidden;
+                .img-blog {
+                    width: 100;
+                    height: 300px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+            .item-blog:last-child {
+                margin-right: 0;
+            }
+            .title-blog {
+                width: 100%;
+                text-align: center;
+                padding: 15px 21px 35px;
+                @include fontNoto(700);
+                font-size: 17px;
+                line-height: 28px;
+            }
+        }
+    }
+    .comments {
+        margin-top: 81px;
+        .send-comment {
+            position: relative;
+            @include centerVertical;
+            height: 80px;
+            img {
+                border-radius: 50%;
+                width: 48px;
+                height: 48px;
+                margin-right: 17px;
+            }
+            textarea {
+                flex: 1;
+                padding: 20px;
+                border-radius: 4px;
+                border: 1px solid #e1e1e1;
+                background: #fff;
+            }
+            textarea::placeholder {
+                font-size: 20px;
+            }
+            button {
+                @include fontNoto;
+                color: white;
+                background-color: $color-success;
+                margin-left: 10px;
+                padding: 8px 12px;
+                border-radius: 4px;
+                border: 1px solid $border-color-gray-v2;
+            }
+        }
+        .all-comment {
+            .item-comment {
+                margin-top: 22px;
+                display: flex;
+                position: relative;
+                img {
+                    border-radius: 50%;
+                    width: 48px;
+                    height: 48px;
+                    margin-right: 17px;
+                }
+                .info-comment {
+                    flex: 1;
+                    h3 {
+                        margin-top: 6px;
+                        @include fontNoto(700);
+                        font-size: 24px;
+                        height: 35px;
+                    }
+                    p {
+                        margin-top: 6px;
+                    }
+                    .content-comment {
+                        @include fontNoto;
+                        color: $text-color-black;
+                        line-height: 28px;
+                    }
+                    .time-comment {
+                        @include fontNoto;
+                        color: $text-color-gray;
+                    }
+                    .form-edit-comment {
+                        margin-top: 6px;
+                        @include centerVertical;
+                        display: none;
+                        .item-form-edit {
+                            padding: 8px 20px;
+                            border-radius: 4px;
+                            border: 1px solid #e1e1e1;
+                        }
+                        textarea {
+                            width: 100%;
+                            line-height: 25px;
+                            background: #fff;
+                            margin-right: 10px;
+                        }
+                        button {
+                            background-color: $color-blue-main;
+                            color: white;
+                        }
+                    }
+                }
+                .icon-option-comment {
+                    font-size: 25px;
+                    position: absolute;
+                    top: 10px;
+                    right: 0;
+                }
+                .icon-option-comment:hover {
+                    @include hover;
+                }
+                .box-option-comment {
+                    position: absolute;
+                    top: 10px;
+                    right: 15px;
+                    @include centerAll;
+                    flex-direction: column;
+                    background-color: #dfe4ea;
+                    cursor: pointer;
+                    display: none;
+                    border-radius: 5px;
+                    .item-option-comment {
+                        text-align: center;
+                        width: 100%;
+                        padding: 10px 20px;
+                        color: $text-color-black;
+                    }
+                    button {
+                        background: none;
+                        border: 0;
+                    }
+                    .item-option-comment:hover {
+                        @include hover;
+                        font-weight: 500;
+                    }
+                }
+                .box-option-comment::after {
+                    content: "";
+                    border: 15px solid;
+                    border-color: transparent transparent transparent #dfe4ea;
+                    position: absolute;
+                    top: 0;
+                    left: 90%;
+                }
+            }
+        }
+        .hidden {
+            display: none;
+        }
+        .show-all-comment {
+            display: inline-block;
+            @include fontNoto(700);
+            font-size: 18px;
+            color: $text-color-gray;
+            margin: 15px 0 0 5px;
+            padding: 0 3px 3px;
+            border-bottom: 1px solid transparent;
+        }
+        .show-all-comment:hover {
+            cursor: pointer;
+            border-color: $text-color-gray;
+        }
+    }
+}

@@ -30,21 +30,6 @@ class PostService
             ->withQueryString($dataSearch);
     }
 
-    public function getTotalRecord(): array
-    {
-        $totalUser = User::count();
-        $totalUserInActive = User::where('status', User::STATUS_INACTIVE)->count();
-        $totalBlog = Post::count();
-        $totalBlogNotApproved = Post::notApproved()->count();
-
-        return [
-            'totalUser' => $totalUser,
-            'totalUserInActive' => $totalUserInActive,
-            'totalBlog' => $totalBlog,
-            'totalBlogNotApproved' => $totalBlogNotApproved,
-        ];
-    }
-
     public function approvedBlog(Post $blog): bool
     {
         try {

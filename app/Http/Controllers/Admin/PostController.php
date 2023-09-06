@@ -8,21 +8,29 @@ use App\Service\User\PostService as PostServiceUser;
 use App\Service\Admin\PostService as PostServiceAdmin;
 use App\Service\User\CategoryService;
 use App\Http\Controllers\Controller;
+use App\Service\Admin\HomeService;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     protected PostServiceAdmin $postServiceAdmin;
 
+    protected HomeService $homeService;
+
     protected PostServiceUser $postServiceUser;
 
     protected CategoryService $categoryService;
 
-    public function __construct(PostServiceAdmin $postServiceAdmin, PostServiceUser $postServiceUser, CategoryService $categoryService)
-    {
+    public function __construct(
+        HomeService $homeService,
+        PostServiceAdmin $postServiceAdmin,
+        PostServiceUser $postServiceUser,
+        CategoryService $categoryService
+    ) {
         $this->postServiceAdmin = $postServiceAdmin;
         $this->postServiceUser = $postServiceUser;
         $this->categoryService = $categoryService;
+        $this->homeService = $homeService;
     }
 
     public function viewBlog(int $status, Request $request)
@@ -35,7 +43,7 @@ class PostController extends Controller
         return view('admin.blog', [
             'blogs' => $blogs,
             'categories' => $this->categoryService->getAll(),
-            'dataTotal' => $this->postServiceAdmin->getTotalRecord(),
+            'dataTotal' => $this->homeService->getTotalRecord(),
         ]);
     }
 

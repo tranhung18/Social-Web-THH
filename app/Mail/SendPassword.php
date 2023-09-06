@@ -39,7 +39,7 @@ class SendPassword extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'auth.text_send_password',
+            view: 'auth.mail_send_password',
         );
     }
 

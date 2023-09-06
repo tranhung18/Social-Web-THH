@@ -17,6 +17,7 @@
         'title_page_blog' => 'Blogs Management',
         'title_page_category' => 'Category Management',
         'title_all_blog' => 'All Blog',
+        'title_all_category' => 'All Category',
         'title_blog_not_approved' => 'Blogs not Approved',
         'title_box_approved' => 'Approved',
         'title_box_unapproved' => 'unApproved',

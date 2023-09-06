@@ -1,0 +1,107 @@
+@mixin fontNoto($fw: 400) {
+    font-family: "Noto Sans JP";
+    font-weight: $fw;
+    font-size: 15px;
+    line-height: 22px;
+    color: $text-color-black;
+}
+
+@mixin fontInfoImg {
+    font-family: "SVN-Gilroy";
+    height: 31px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+@mixin centerVertical {
+    display: flex;
+    align-items: center;
+}
+
+@mixin centerHorizontal {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin centerAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin hover {
+    color: $color-primary;
+    cursor: pointer;
+}
+
+@mixin btnPrimary {
+    background-color: $color-blue-main;
+    color: white;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+}
+
+@mixin inputText {
+    background: #ffffff;
+    border: 1px solid $border-color-gray-v1;
+    border-radius: 4px;
+}
+
+@mixin btnFile {
+    padding: 8px 12px 10px 15px;
+    @include fontNoto(700);
+    color: $text-upload-file;
+    border: 1px solid $color-blue-main;
+    cursor: pointer;
+}
+
+@mixin paginate {
+    position: relative;
+    @include centerAll;
+    li {
+        @include centerAll;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        a {
+            height: 28px;
+            font-family: "SVN-Gilroy-Bold";
+            font-style: normal;
+            font-size: 20px;
+            line-height: 28px;
+            color: #211e3b;
+        }
+    }
+    li:hover,
+    .paginate-active {
+        border-radius: 50%;
+        background-color: #ffe4e4;
+        a {
+            color: $color-primary;
+        }
+    }
+    .arrow-paginate {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        a {
+            color: white;
+        }
+    }
+    .arrow-paginate:hover {
+        opacity: 0.8;
+        a {
+            color: white;
+        }
+    }
+    li:first-child {
+        background-color: $color-primary;
+    }
+    li:last-child {
+        background: #e5e5e5;
+    }
+    li + li {
+        margin-left: 10px;
+    }
+}

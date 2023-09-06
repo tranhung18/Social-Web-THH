@@ -6,17 +6,21 @@ use App\Models\User;
 use App\Service\Admin\UserService;
 use App\Service\User\PostService;
 use App\Http\Controllers\Controller;
+use App\Service\Admin\HomeService;
 
 class UserController extends Controller
 {
+    protected HomeService $homeService;
+
     protected UserService $userService;
 
     protected PostService $postService;
 
-    public function __construct(UserService $userService, PostService $postService)
+    public function __construct(HomeService $homeService, UserService $userService, PostService $postService)
     {
         $this->userService = $userService;
         $this->postService = $postService;
+        $this->homeService = $homeService;
     }
 
     public function viewUser()
@@ -25,6 +29,7 @@ class UserController extends Controller
 
         return view('admin.user', [
             'users' => $this->userService->getAllUser(),
+            'dataTotal' => $this->homeService->getTotalRecord(),
         ]);
     }
 

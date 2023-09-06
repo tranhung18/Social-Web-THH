@@ -1,4 +1,4 @@
-@extends('layouts.admin.base')
+@extends('admin.layouts.base')
 
 @section('title_page')
   <h1>{{ __('admin.title_page_dashboard') }}</h1>
@@ -50,18 +50,20 @@
             ></a>
           </div>
         </div>
+
         <div class="col-lg-3 col-6">
-          <div class="small-box bg-warning">
+          <div class="small-box bg-secondary">
             <div class="inner">
-              <h3>{{ $dataTotal['totalBlogNotApproved'] }}</h3>
-              <p>{{ __('admin.title_blog_not_approved') }}</p>
+              <h3>{{ $dataTotal['totalCategory'] }}</h3>
+              <p>{{ __('admin.title_page_category') }}</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="{{ route('admin.blog.index', ['status' => App\Models\Post::STATUS_NOT_APPROVED]) }}" class="small-box-footer"
-              >{{ __('admin.text_more_info') }} <i class="fas fa-arrow-circle-right"></i
-            ></a>
+            <a href="{{ route('admin.categories.index') }}" class="small-box-footer">
+              {{ __('admin.text_more_info') }} 
+              <i class="fas fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
       </div>
