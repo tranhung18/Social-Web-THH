@@ -7,6 +7,7 @@ use App\Service\Admin\UserService;
 use App\Service\User\PostService;
 use App\Http\Controllers\Controller;
 use App\Service\Admin\HomeService;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -23,12 +24,16 @@ class UserController extends Controller
         $this->homeService = $homeService;
     }
 
-    public function viewUser()
+    public function viewUser(Request $request)
     {
         $this->authorize('isAdmin', User::class);
-
+        $data = [
+            'type' => $request->get('type'),
+            'check' => $request->get('check'),
+            'dataSearch' => $request->get('dataSearch'),
+        ];
         return view('admin.user', [
-            'users' => $this->userService->getAllUser(),
+            'users' => $this->userService->getAllUser($data),
             'dataTotal' => $this->homeService->getTotalRecord(),
         ]);
     }
@@ -40,6 +45,28 @@ class UserController extends Controller
         return view('users.profile', [
             'profile' => $user,
         ]);
+    }
+
+    public function updateStatus(User $user)
+    {
+        $this->authorize('isAdmin', User::class);
+
+        if ($this->userService->updateStatus($user)) {
+            return redirect()->route('admin.user.index')->with('success', 'Update Status Success');
+        }
+
+        return redirect()->route('admin.user.index')->with('error', 'Update Status Error');
+    }
+
+    public function updateRole(User $user)
+    {
+        $this->authorize('isAdmin', User::class);
+
+        if ($this->userService->updateRole($user)) {
+            return redirect()->route('admin.user.index')->with('success', 'Update Role Success');
+        }
+
+        return redirect()->route('admin.user.index')->with('error', 'Update Role Error');
     }
 
     public function deleteUser(User $user)

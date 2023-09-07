@@ -11,10 +11,5 @@ class Category extends Model
 
     const LIMIT_PAGE = 5;
 
-    const TYPE_CATEGORY_INACTIVE = 0;
-
-    const TYPE_CATEGORY_ACTIVE = 1;
-
-
     protected $table = "categories";
 }

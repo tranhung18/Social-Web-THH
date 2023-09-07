@@ -13,7 +13,6 @@
 
         'title_home' => 'Home',
         'title_page_dashboard' => 'Dashboard',
-        'title_page_user' => 'Users Management',
         'title_page_blog' => 'Blogs Management',
         'title_page_category' => 'Category Management',
         'title_all_blog' => 'All Blog',
@@ -47,5 +46,34 @@
         'msg_approved_blogs_fail' => 'Approved All Blog Fail',
         'msg_delete_user_success' => 'Delete User Successfully',
         'msg_delete_user_fail' => 'Delete User Fail, Please try again',
+
+        // Base
+        'form' => [
+            'btn' => [
+                'delete' => 'Delete',
+                'cancel' => 'Cancel',
+            ],
+        ],
+
+        'component' => [
+            'box_delete' => [
+                'title' => 'Delete',
+                'content' => 'Are you sure want to delete?',
+            ],
+        ],
+
+        // User Manager
+        'user' => [
+            'title_page' => 'Users Management',
+            'title_total' => 'ALl User',
+            'text_role' => [
+                'admin' => 'Admin',
+                'user' => 'User',
+            ],
+            'text_status' => [
+                'active' => 'Active',
+                'inactive' => 'Inactive',
+            ],
+        ],
     ];
 ?>

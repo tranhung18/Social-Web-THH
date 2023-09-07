@@ -43,66 +43,73 @@ body {
     display: none;
 }
 
-.box-delete {
-    overflow: hidden;
-    position: fixed;
-    inset: 0;
-    z-index: 3;
-    transition: all 0.2s linear;
-    background: rgba(72, 72, 72, 0.40);
-    display: none;
-    .layout {
-        position: absolute;
-        top: 185px;
-        left:467px;
-        width: 542px;
-        background-color: white;
-        box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.04);
-        .header-box {
-            @include centerVertical;
-            justify-content: space-between;
-            border-bottom: 1px solid $border-color-default;
-            p {
-                @include fontNoto(700);
-                font-size: 20px;
-                padding: 16px 0 16px 28px;
+// component
+.box-component {
+    .box-delete {
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        z-index: 3;
+        transition: all 0.2s linear;
+        background: rgba(72, 72, 72, 0.4);
+        display: none;
+
+        .layout {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 400px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.04);
+
+            .header-box {
+                padding: 20px;
+                @include centerVertical;
+                justify-content: space-between;
+                border-bottom: 1px solid $border-color-default;
+
+                p {
+                    @include fontNoto(700);
+                    font-size: 23px;
+                }
+                i {
+                    font-size: 20px;
+                    &:hover {
+                        @include hover;
+                    }
+                }
             }
-            i {
-                margin: 10px 11px auto 0;
+            .question-box {
+                @include centerAll;
+                padding: 20px;
+                border-bottom: 1px solid $border-color-default;
+                
+                p {
+                    font-size: 20px;
+                }
             }
-            i:hover {
-                @include hover;
-            }
-        }
-        .question-box {
-            height: 118px;
-            @include centerAll;
-            p {
-                @include fontNoto;
-            }
-        }
-        .form-request {
-            padding: 12px 53px 16px;
-            border-top: 1px solid $border-color-default;
-            @include centerVertical;
-            justify-content: space-between;
-            div, .btn {
-                color: #FFF;
-                font-size: 20px;
-                font-family: "Noto Sans JP";
-                padding: 4px 10px 7px;
-                border-radius: 4px;
-            }
-            .btn:hover {
-                opacity: 0.8;
-            }
-            .btn-cancel {
-                border: 1px solid $color-cancel;
-                background: $color-cancel;
-            }
-            .btn-delete {
-                border: 1px solid $color-error;
-                background: $color-error;
+            .box-btn {
+                padding: 10px 20px 10px 10px;
+                float: right;
+                .btn {
+                    color: white;
+                    padding: 6px 10px;
+                    border-radius: 4px;
+    
+                    &.btn-cancel {
+                        margin-left: 20px;
+                        border: 1px solid $color-cancel;
+                        background-color: $color-cancel !important;
+                    }
+                    &.btn-delete {
+                        border: 1px solid $color-error;
+                        background-color: $color-error !important;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
             }
         }
     }

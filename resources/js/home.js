@@ -54,10 +54,3 @@ $('.icon-close-menu').click(function () {
     $('.menu-mobile').width(0);
     $('.search-mobile').width(0);
 });
-
-$('.delete-blog').click(function () {
-    $('.box-delete').show();
-});
-$('.cancel-box-delete').click(function () {
-    $('.box-delete').hide();
-});
