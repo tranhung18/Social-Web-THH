@@ -1,40 +1,42 @@
+@props(['data'])
+
 <ul class="paginate">
-    @if ($blogs->lastPage() > 1)
+    @if ($data->lastPage() > 1)
         <li class="arrow-paginate">
-            <a href="{{ $blogs->previousPageUrl() }}" rel="prev">
+            <a href="{{ $data->previousPageUrl() }}" rel="prev">
                 <i class="fa-solid fa-angle-left"></i>
             </a>
         </li>
-        <li class="{{ ($blogs->currentPage() == 1) ? ' paginate-active' : '' }}">
-            <a href="{{ $blogs->url($blogs->onFirstPage()) }}">1</a>
+        <li class="{{ ($data->currentPage() == 1) ? ' paginate-active' : '' }}">
+            <a href="{{ $data->url($data->onFirstPage()) }}">1</a>
         </li>
         <?php
-            $start = $blogs->currentPage() - 2;
-            $end = $blogs->currentPage() + 2;
+            $start = $data->currentPage() - 2;
+            $end = $data->currentPage() + 2;
             if ($start < 1) {
                 $start = 1;
                 $end += 1;
             } 
-            if ($end >= $blogs->lastPage()) {
-                $end = $blogs->lastPage();
+            if ($end >= $data->lastPage()) {
+                $end = $data->lastPage();
             }
         ?>
-        @if ($blogs->currentPage() > 3)
+        @if ($data->currentPage() > 3)
             <li><span>...</span></li>
         @endif
         @for ($i = $start + 1; $i < $end; $i++)
-                <li class="{{ ($blogs->currentPage() == $i) ? ' paginate-active' : '' }}">
-                    <a href="{{ $blogs->url($i) }}">{{$i}}</a>
+                <li class="{{ ($data->currentPage() == $i) ? ' paginate-active' : '' }}">
+                    <a href="{{ $data->url($i) }}">{{$i}}</a>
                 </li>
         @endfor
-        @if ($blogs->currentPage()+2 < $blogs->lastPage())
+        @if ($data->currentPage()+2 < $data->lastPage())
             <li><span>...</span></li>
         @endif
-        <li class="{{ ($blogs->currentPage() == $blogs->lastPage()) ? ' paginate-active' : '' }}">
-            <a href="{{ $blogs->url($blogs->lastPage()) }}">{{ $blogs->lastPage() }}</a>
+        <li class="{{ ($data->currentPage() == $data->lastPage()) ? ' paginate-active' : '' }}">
+            <a href="{{ $data->url($data->lastPage()) }}">{{ $data->lastPage() }}</a>
         </li>
         <li class="arrow-paginate">
-            <a href="{{ $blogs->nextPageUrl() }}" rel="next">
+            <a href="{{ $data->nextPageUrl() }}" rel="next">
                 <i class="fa-solid fa-angle-right"></i>
             </a>
         </li>

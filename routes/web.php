@@ -68,9 +68,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'],function () {
         Route::put('{blog}/update', [PostControllerAdmin::class, 'approvedBlog'])->name('update.status');
         Route::delete('{blog}/delete', [PostControllerAdmin::class, 'deleteBlog'])->name('delete');
     });
+
     Route::group(['as' => 'user.', 'prefix' => 'users'],function () {
         Route::get('/', [UserControllerAdmin::class, 'viewUser'])->name('index');
         Route::get('{user}/profile', [UserControllerAdmin::class, 'viewProfileUser'])->name('profile');
+        Route::put('{user}/update-status', [UserControllerAdmin::class, 'updateStatus'])->name('update.status');
+        Route::put('{user}/update-role', [UserControllerAdmin::class, 'updateRole'])->name('update.role');
         Route::delete('{user}/delete', [UserControllerAdmin::class, 'deleteUser'])->name('delete');
     });
 

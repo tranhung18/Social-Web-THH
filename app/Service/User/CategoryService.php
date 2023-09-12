@@ -9,6 +9,6 @@ class CategoryService
 {
     public function getAll(): Collection
     {
-        return Category::where('status', Category::TYPE_CATEGORY_ACTIVE)->get();
+        return Category::get();
     }
 }

@@ -71,6 +71,10 @@
                     margin-right: 20px;
                 }
 
+                .item-tools + .item-tools {
+                    margin-left: 20px;
+                }
+
                 .form-search {
                     width: 30%;
                     margin-right: 20px;
@@ -88,6 +92,12 @@
                         border: none;
                         background: none;
                     }
+                }
+
+                .select-item {
+                    padding: 8px 12px;
+                    border: 1px solid #d4d4d4;
+                    border-radius: 5px;
                 }
             }
         }
@@ -193,15 +203,24 @@
         .card-body {
             table {
                 text-align: center;
+                overflow-x: auto;
                 tr {
                     td {
                         &.avatar-user {
-                            width: 150px;
-                            height: 150px;
+                            width: 100px;
+                            height: 100px;
                             img {
                                 width: 100%;
                                 height: 100%;
+                                object-fit: cover;
                                 border-radius: 50%;
+                            }
+                        }
+                        &.status-role-user {
+                            button {
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                color: white;
                             }
                         }
                     }
@@ -247,4 +266,32 @@
             }
         }
     }
+    .layout-users {
+        .card {
+            .card-body {
+                table {
+                    font-size: 12px;
+                    tr {
+                        td {
+                            &.avatar-user {
+                                width: 50px;
+                                height: 70px;
+                            }
+                            &.status-role-user {
+                                button {
+                                    font-size: 10px;
+                                    padding: 3px 5px;
+                                    border-radius: 5px;
+                                }
+                            }
+                        }
+                        .created-user {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+

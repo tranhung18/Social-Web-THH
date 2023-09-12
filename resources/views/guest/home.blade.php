@@ -51,6 +51,6 @@
                 </div>
             @endforeach
         </div>
-        @include('layouts.components.pagination')
+        @include('layouts.components.pagination', ['data' => $blogs])
     </div>
 @endsection

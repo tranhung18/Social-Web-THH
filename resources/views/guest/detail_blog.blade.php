@@ -33,7 +33,7 @@
                                 </a>
                             @endcan
                             @can('delete', $blog)
-                                <button class="item-status delete-blog">{{ __('blog.btn_delete_blog') }}</button>
+                                <button class="item-status delete-blog btn-delete-blog">{{ __('blog.btn_delete_blog') }}</button>
                             @endcan
                         </div>
                     @endif
@@ -105,25 +105,13 @@
             @endif
         </div>
     </div>
-    <div class="box-delete">
-        <div class="layout">
-            <div class="header-box">
-                <p>{{ __('blog.title_box_delete') }}</p>
-                <i class="fa-solid fa-xmark cancel-box-delete"></i>
-            </div>
-            <div class="question-box">
-                <p>{{ __('blog.question_delete') }}</p>
-            </div>
-            <form class="form-request" action="{{ route('blog.delete', ['blog' => $blog]) }}" method="POST">
-                @method("DELETE")
-                @csrf
-                <div class="btn btn-cancel cancel-box-delete">{{ __('auth.btn_cancel') }}</div>
-                <button class="btn btn-delete" type="submit">{{ __('auth.btn_delete') }}</button>
-            </form>
-        </div>
+    <div class="box-component">
+        @include('layouts.components.popup_delete', [
+            'action' => route('blog.delete', ['blog' => $blog]),
+            'classname' => 'box-delete-blog',
+        ])
     </div>
 
-    @vite(['resources/js/setup.js'])
     @vite(['resources/js/detail.js'])
     @vite(['resources/js/comment.js'])
 @endsection

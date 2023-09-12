@@ -105,7 +105,7 @@
                 </table>
             </div>
             <div class="card-footer">
-                @include('layouts.components.pagination')
+                @include('layouts.components.pagination', ['data' => $blogs])
             </div>
         </div>
     </section>
