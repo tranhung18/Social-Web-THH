@@ -3,31 +3,26 @@
 namespace App\Service\Admin;
 
 use Exception;
-use App\Models\User;
 use App\Models\Post;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class PostService
 {
-    public function getAllBlog(int $status): LengthAwarePaginator
+    public function getAll(array $data): LengthAwarePaginator
     {
-        if ($status === Post::STATUS_ALL_BLOG) {
-            return Post::with('likes')->paginate(Post::LIMIT_BLOG_PAGE);
-        }
+        $query = Post::query();
+        ['status' => $status, 'dataSearch' => $dataSearch, 'categoryId' => $categoryId] = $data;
 
-        return Post::notApproved()->with('likes')->paginate(Post::LIMIT_BLOG_PAGE);
-    }
+        if ($status)
+            $query->where('status', $status);
 
-    public function searchBlog(array $dataSearch, int $status): LengthAwarePaginator
-    {
-        $query = Post::where('title', 'like', '%' . $dataSearch['data'] . '%')
-            ->orWhere('content', 'like', '%' . $dataSearch['data'] . '%');
-        if ($status === Post::STATUS_NOT_APPROVED) {
-            $query->notApproved();
-        }
+        if ($categoryId)
+            $query->where('category_id', $categoryId);
 
-        return $query->paginate(Post::LIMIT_BLOG_PAGE)
-            ->withQueryString($dataSearch);
+        if ($dataSearch)
+            $query->where('title', 'like', '%' . $dataSearch . '%');
+
+        return $query->with(['likes', 'categories'])->paginate(Post::LIMIT_BLOG_PAGE);
     }
 
     public function approvedBlog(Post $blog): bool

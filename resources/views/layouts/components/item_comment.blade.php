@@ -10,9 +10,9 @@
                     <textarea name="content" id="" class="textarea-update item-form-edit">{{ $comment->content }}</textarea>
                     <button class="item-form-edit">{{ __('comment.btn_save') }}</button>
                 </form>
-                <p class="content-my-comment">{{ $comment->content }}</p>
+                <p class="content-my-comment">{!! nl2br(e($comment->content)) !!}</p>
             @else
-                <p class="content-comment">{{ $comment->content }}</p>
+                <p class="content-comment">{!! nl2br(e($comment->content)) !!}</p>
             @endcan
             <p class="time-comment">{{ $comment->created_at->diffForHumans() }}</p>
         </div>

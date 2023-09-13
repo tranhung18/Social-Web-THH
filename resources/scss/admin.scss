@@ -120,31 +120,18 @@
     .card {
         .card-body {
             table {
+                text-align: center;
+                overflow-y: scroll;
                 tr {
-                    th:first-child {
-                        width: 3%;
-                    }
-                    th:last-child {
-                        width: 12%;
-                    }
-                    .header-status {
-                        width: 10%;
-                    }
-                    th {
-                        text-align: center;
-                    }
-                    td:first-child {
-                        text-align: center;
-                    }
                     .status-blog {
-                        .btn-update-status-blog:hover {
+                        button:hover {
                             color: white;
                             opacity: 0.8;
                         }
                     }
                     .image-blog {
                         img {
-                            width: 100%;
+                            width: 80%;
                             height: 120px;
                             border-radius: 8px;
                             margin: 0 auto;
@@ -180,6 +167,7 @@
                         form {
                             @include centerVertical;
                             justify-content: space-evenly;
+                            flex-wrap: wrap;
                         }
                     }
                 }

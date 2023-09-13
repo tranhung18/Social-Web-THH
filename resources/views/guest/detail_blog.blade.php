@@ -9,7 +9,7 @@
                 <p>{{ __('blog.title_detail_blog') }}</p>
             </div>
             <div class="detail-blog">
-                <h3>{{ $blog->title }}</h3>
+                <h3>{!! nl2br(e($blog->title)) !!}</h3>
                 <div class="header-blog">
                     <div class="auth">
                         <img src="{{ Storage::url($blog->user->avatar) }}" alt="">
@@ -103,6 +103,7 @@
                     {{ __('blog.text_view_more') }}
                 </div>
             @endif
+            
         </div>
     </div>
     <div class="box-component">
@@ -111,7 +112,7 @@
             'classname' => 'box-delete-blog',
         ])
     </div>
-
+    
     @vite(['resources/js/detail.js'])
     @vite(['resources/js/comment.js'])
 @endsection

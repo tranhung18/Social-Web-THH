@@ -5,6 +5,7 @@ namespace App\Service\User;
 use Exception;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -41,13 +42,15 @@ class PostService
     public function createPost(object $data): bool
     {
         try {
+            $user = Auth::user();
+            $status =  ($user->role === User::ROLE_ADMIN) ? Post::STATUS_APPROVED : Post::STATUS_NOT_APPROVED;
             Post::create([
-                'user_id' => Auth::id(),
+                'user_id' => $user->id,
                 'category_id' => $data['category_id'],
                 'title' => $data['title'],
                 'content' => $data['content'],
                 'image' => Storage::disk('public')->put('images', $data->file('image')),
-                'status' => Post::STATUS_NOT_APPROVED
+                'status' => $status
             ]);
 
             return true;
@@ -82,7 +85,7 @@ class PostService
         try {
             DB::beginTransaction();
             $blog->likes()->detach();
-            Comment::where('id', $blog->id)->delete();
+            Comment::where('post_id', $blog->id)->delete();
             $blog->delete();
             DB::commit();
 
