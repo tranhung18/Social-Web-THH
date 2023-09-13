@@ -64,7 +64,7 @@ Route::group(['as' => 'user.', 'prefix' => 'users'],function () {
 Route::group(['as' => 'admin.', 'prefix' => 'admin'],function () {
     Route::get('/', [HomeController::class, 'viewDashboard'])->name('dashboard');
     Route::group(['as' => 'blog.', 'prefix' => 'blogs'],function () {
-        Route::get('/{status}', [PostControllerAdmin::class, 'viewBlog'])->name('index');
+        Route::get('/', [PostControllerAdmin::class, 'viewBlog'])->name('index');
         Route::put('{blog}/update', [PostControllerAdmin::class, 'approvedBlog'])->name('update.status');
         Route::delete('{blog}/delete', [PostControllerAdmin::class, 'deleteBlog'])->name('delete');
     });

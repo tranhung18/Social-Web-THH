@@ -14,7 +14,7 @@
                 </h3>
                 <div class="card-tools">
                     <select type="text" name="role" class="select-item item-tools" id="selectRole">
-                        <option value="" @if (!request()->type) checked @endif>Select Role</option>
+                        <option value="{{ route('admin.user.index') }}" @if (!request()->type) checked @endif>Select Role</option>
                         <option
                             value="{{ route('admin.user.index', [
                                 'type' => 'role',

@@ -33,15 +33,18 @@ class PostController extends Controller
         $this->homeService = $homeService;
     }
 
-    public function viewBlog(int $status, Request $request)
+    public function viewBlog(Request $request)
     {
         $this->authorize('isAdmin', User::class);
-        $blogs = isset($request->data) ?
-            $this->postServiceAdmin->searchBlog($request->all(), $status) :
-            $this->postServiceAdmin->getAllBlog($status);
+
+        $data = [
+            'status' => $request->get('status'),
+            'dataSearch' => $request->get('dataSearch'),
+            'categoryId' => $request->get('id'),
+        ];
 
         return view('admin.blog', [
-            'blogs' => $blogs,
+            'blogs' => $this->postServiceAdmin->getAll($data),
             'categories' => $this->categoryService->getAll(),
             'dataTotal' => $this->homeService->getTotalRecord(),
         ]);

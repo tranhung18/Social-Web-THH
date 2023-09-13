@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{ Vite::asset('resources/css/adminlte.css') }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script src="{{ Vite::asset('resources/js/adminlte.js') }}"></script>
+    @vite(['resources/js/adminlte.js'])
+    @vite(['resources/js/admin.js'])
     @vite(['resources/scss/admin.scss'])
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
@@ -48,7 +49,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.blog.index', ['status' =>  App\Models\Post::STATUS_ALL_BLOG]) }}" 
+                  <a href="{{ route('admin.blog.index') }}" 
                     class="nav-link @if (Route::is('admin.blog.index')) active @endif" 
                   >
                     <i class="fa-solid fa-blog"></i>

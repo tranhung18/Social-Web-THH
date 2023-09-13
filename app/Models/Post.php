@@ -14,9 +14,9 @@ class Post extends Model
 
     protected $table = "posts";
 
-    const STATUS_APPROVED = 1;
-
-    const STATUS_NOT_APPROVED = 0;
+    const STATUS_NOT_APPROVED = 1;
+    
+    const STATUS_APPROVED = 2;
 
     const STATUS_ALL_BLOG = 2;
 
@@ -46,6 +46,11 @@ class Post extends Model
     public function comments(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'comments', 'post_id', 'user_id');
+    }
+
+    public function categories(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function scopeApproved(Builder $query): Builder

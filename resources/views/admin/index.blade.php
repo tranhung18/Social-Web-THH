@@ -26,7 +26,7 @@
           <div class="small-box bg-info">
             <div class="inner">
               <h3>{{ $dataTotal['totalUser'] }}</h3>
-              <p>{{ __('admin.title_page_user') }}</p>
+              <p>{{ __('admin.user.title_page') }}</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -45,12 +45,11 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="{{ route('admin.blog.index', ['status' => App\Models\Post::STATUS_ALL_BLOG]) }}" class="small-box-footer"
+            <a href="{{ route('admin.blog.index') }}" class="small-box-footer"
               >{{ __('admin.text_more_info') }} <i class="fas fa-arrow-circle-right"></i
             ></a>
           </div>
         </div>
-
         <div class="col-lg-3 col-6">
           <div class="small-box bg-secondary">
             <div class="inner">
