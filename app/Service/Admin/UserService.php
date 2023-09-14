@@ -2,6 +2,8 @@
 
 namespace App\Service\Admin;
 
+use App\Models\Comment;
+use App\Models\Post;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -69,6 +71,12 @@ class UserService
                 return false;
             }
             DB::beginTransaction();
+            
+            $blog = Post::where('user_id', $user->id)->first();
+            $blog->likes()->detach();
+            Comment::where('post_id', $blog->id)->delete();
+            $blog->delete();
+
             $user->likes()->detach();
             $user->comments()->delete();
             $user->blogs()->delete();

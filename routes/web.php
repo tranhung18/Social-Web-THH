@@ -79,5 +79,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'],function () {
 
     Route::group(['as' => 'categories.', 'prefix' => 'categories'],function () {
         Route::get('/', [CategoryController::class, 'view'])->name('index');
+        Route::post('/store', [CategoryController::class, 'store'])->name('store');
+        Route::put('{category}/update', [CategoryController::class, 'update'])->name('update');
+        Route::delete('{category}/delete', [CategoryController::class, 'delete'])->name('delete');
     });
 });

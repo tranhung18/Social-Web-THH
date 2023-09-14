@@ -14,3 +14,12 @@ $('#selectStatusBlog').change(function() {
 $('#selectCategory').change(function() {
     location.href = $(this).val()
 })
+
+// CATEGORY
+$('#btnNewCategory').click(function() {
+    $('#boxNewCategory').show()
+})
+
+$('.cancel-box-add').click(function() {
+    $('.box-add').hide()
+})
