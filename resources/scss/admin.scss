@@ -67,7 +67,7 @@
                 flex: 1;
                 justify-content: flex-end;
 
-                a:first-child {
+                .btn:first-child {
                     margin-right: 20px;
                 }
 
@@ -177,10 +177,69 @@
 }
 
 .layout-categories {
+    position: relative;
     .card {
         .card-body {
             table {
                 text-align: center;
+            }
+        }
+    }
+    .box-category {
+        position: fixed;
+        overflow: hidden;
+        inset: 0;
+        z-index: 3;
+        background: rgba(72, 72, 72, 0.4);
+        display: none;
+
+        form {
+            width: 400px;
+            position: absolute;
+            top: 40%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px 40px;
+            box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.04);
+            border-radius: 10px;
+            @include centerAll;
+            flex-direction: column;
+
+            h2 {
+                font-size: 25px;
+                text-align: center;
+                margin: 0 0 20px;
+            }
+
+            input {
+                width: 100%;
+                border-radius: 5px;
+                border: 1px solid #000000;
+                padding: 8px 12px;
+            }
+
+            button {
+                @include btnPrimary;
+                width: 40%;
+                font-size: 20px;
+                padding: 5px 8px;
+                margin: 20px auto 0;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            i {
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                font-size: 20px;
+                cursor: pointer;
+                &:hover {
+                    color: $color-primary;
+                }
             }
         }
     }
@@ -282,4 +341,3 @@
         }
     }
 }
-

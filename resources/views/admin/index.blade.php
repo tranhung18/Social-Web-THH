@@ -25,7 +25,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>{{ $dataTotal['totalUser'] }}</h3>
+              <h3>{{ $dataTotal['totalUser']-1 }}</h3>
               <p>{{ __('admin.user.title_page') }}</p>
             </div>
             <div class="icon">

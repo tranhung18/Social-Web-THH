@@ -28,9 +28,8 @@ class PostService
     public function approvedBlog(Post $blog): bool
     {
         try {
-            $blog->update([
-                'status' => !$blog->status
-            ]);
+            $status = ($blog->status === Post::STATUS_APPROVED) ? Post::STATUS_NOT_APPROVED : Post::STATUS_APPROVED;
+            $blog->update(['status' => $status]);
 
             return true;
         } catch (Exception $e) {
